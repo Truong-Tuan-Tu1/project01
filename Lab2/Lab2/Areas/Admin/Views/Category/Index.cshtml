@@ -1,0 +1,38 @@
+﻿@model List<Category>
+
+<div class="row">
+    <div class="col-md-9">
+        <h1>LIST CATEGORY</h1>
+    </div>
+    <div class="col-md-3">
+        <a asp-action="Create" class="mt-1 btn btn-secondary"><i class="bi bi-plus-circle"></i> Create new category</a>
+    </div>
+
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#Id</th>
+            <th>Name</th>
+            <th>Display</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Name</td>
+                <td>@x.DisplayOrder</td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@x.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
+                    <a asp-action="Delete" asp-route-id="@x.Id" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<partial name="_Notifications"/>
